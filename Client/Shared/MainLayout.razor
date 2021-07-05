@@ -1,17 +1,19 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+    <div class="flex-col bg-blue-900 md:flex-row flex min-h-screen">
+        <Sidebar />
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
+        @* <div class="flex-none px-4 w-24 min-h-full">
+            <a href="http://blazor.net" target="_blank" class="md:ml-auto">About</a>
+            </div> *@
 
-        <div class="content px-4">
+        <div id="content" class="flex-grow bg-gradient-to-br from-blue-100 to-blue-200">
             @Body
         </div>
+
+        @* <div class="flex-none px-4 md:w-2/12 min-h-full bg-orange-500">
+            Right sidebar
+            </div> *@
     </div>
 </div>

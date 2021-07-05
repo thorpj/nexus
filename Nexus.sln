@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nexus.Client", "Client\Nexu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nexus.Shared", "Shared\Nexus.Shared.csproj", "{9F91667D-5BDC-4D9B-AD4F-87650A9B7692}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Tests", "Nexus.Tests\Nexus.Tests.csproj", "{461C3DD5-AA75-4C89-865F-47237FE26071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nexus.Tests", "Nexus.Tests\Nexus.Tests.csproj", "{461C3DD5-AA75-4C89-865F-47237FE26071}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8CCD4D05-97C4-4819-9E79-D87F9B3E44C5}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

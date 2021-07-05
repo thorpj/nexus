@@ -2,10 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>f9ff54c0-c757-4eb4-aed0-d3f0949eb57d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0-preview.5.21301.17" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,5 +20,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
-
+  <ItemGroup>
+    <None Remove="..\.dockerignore" />
+  </ItemGroup>
 </Project>

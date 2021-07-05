@@ -1,20 +1,42 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-preview.5.21301.17" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.5.21301.17" PrivateAssets="all" />
-  </ItemGroup>
+    <ItemGroup>
+      <None Include="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\Nexus.Shared.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-preview.5.21301.17" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.5.21301.17" PrivateAssets="all" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Components\" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Shared\Nexus.Shared.csproj" />
+    </ItemGroup>
 
+    <Target Name="CheckForNpm" BeforeTargets="NpmInstall">
+        <Message Importance="High" Text="Checking for NPM"></Message>
+        <Exec Command="npm -v" ContinueOnError="true">
+            <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+        </Exec>
+        <Error Condition="'$(ErrorCode)' != '0'" Text="You must install NPM to build this project" />
+    </Target>
+
+    <Target Name="NpmInstall" BeforeTargets="BuildCSS" Outputs="$(NpmLastInstall)">
+        <Message Importance="High" Text="Running npm install"></Message>
+        <Exec Command="npm install" />
+        <Touch Files="$(NpmLastInstall)" AlwaysCreate="true" />
+    </Target>
+
+    <!-- <Exec Command="npm run buildcss:dev" Condition=" '$(Configuration)' == 'Debug' AND !Exists('$(ProjectDir)wwwroot\css\app.css') " />
+    <Exec Command="npx postcss $(ProjectDir)obj\$(ConfigurationName)\net6.0\scopedcss\bundle\$(ProjectName).styles.css -r" /> -->
+    <Target Name="BuildCSS" BeforeTargets="Compile">
+        <Message Importance="High" Text="Runing buildcss. You must run 'npm run buildcss:watch' in a seperate terminal for Tailwind JIT to work."></Message>
+        <Exec Command="npm run buildcss:dev" Condition=" '$(Configuration)' == 'Debug' " />
+        
+        <Exec Command="npm run buildcss:release" Condition=" '$(Configuration)' == 'Release' " />
+    </Target>
 </Project>
