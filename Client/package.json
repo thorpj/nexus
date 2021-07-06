@@ -7,7 +7,7 @@
     "scripts": {
         "buildcss:dev": "cross-env TAILWIND_MODE=build postcss ./app.css -o ./wwwroot/css/app.css",
         "buildcss:release": "cross-env NODE_ENV=production postcss ./app.css -o ./wwwroot/css/app.css",
-        "buildcss:watch": "watch \"npm run buildcss:dev\"  --wait=1 --filter=./.watch.js"
+        "buildcss:watch": "npx tailwindcss --watch --config tailwind.config.js --postcss postcss.config.js -i app.css -o ./wwwroot/css/app.css"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.3",
@@ -15,6 +15,7 @@
         "cross-env": "^7",
         "cssnano": "^5",
         "postcss": "^8.3.5",
+        "postcss-import": "^14",
         "postcss-cli": "^8",
         "tailwind-watch": "^0.0.6",
         "tailwindcss": "^2",
