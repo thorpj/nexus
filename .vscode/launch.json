@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Webassembly: Launch (Hot Reload)",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "console": "integratedTerminal",
+            // "internalConsoleOptions": "neverOpen",
+            "preLaunchTask": "webassembly: start tailwind jit",
+            "postDebugTask": "webassembly: stop tailwind jit",
+            "args": [
+              "watch",
+              "run"
+            ],
+            "cwd": "${workspaceFolder}/Client",
+          },
+    ],
+    "compounds": []
+}

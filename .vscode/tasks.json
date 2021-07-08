@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "webassembly: start tailwind jit",
+            "type": "npm",
+            "script": "buildcss:watch",
+            "isBackground": true,
+            "presentation": {
+                "echo": false,
+                "reveal": "never",
+                "panel": "shared",
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/Client"
+            }
+        },
+        {
+            "label": "webassembly: stop tailwind jit",
+            "command": "echo ${input:stop-webassembly-tailwind-jit}",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/Client"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "stop-webassembly-tailwind-jit",
+            "type": "command",
+            "command": "workbench.action.tasks.terminate",
+            "args": "webassembly: start tailwind jit"
+        }
+    ]
+}
