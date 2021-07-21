@@ -25,14 +25,13 @@ namespace Nexus.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddResponseCaching();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
-
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -45,15 +44,15 @@ namespace Nexus.Server
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            // =============
+            // ============= Custom
             app.UseMiddleware<Nexus.Server.Services.ControllerLoggingMiddleware>();
-
+            app.UseResponseCaching();
 
 
             // =============

@@ -1,0 +1,24 @@
+﻿@page "/autotask/ticket"
+@inject HttpClient Http
+
+<h3>Ticket</h3>
+
+@if (_ticket == null)
+{
+    <p>...Loading</p>
+}
+else
+{
+    <h1>@_ticket</h1>
+}
+
+@code {
+    private IEnumerable<Ticket> _tickets;
+    private Ticket _ticket;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _tickets = await Http.GetFromJsonAsync<IEnumerable<Ticket>>("api/autotask/tickets");
+        _ticket = await Http.GetFromJsonAsync<Ticket>("api/autotak/ticket/68275");
+    }
+}

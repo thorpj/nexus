@@ -4,11 +4,23 @@
     <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>f9ff54c0-c757-4eb4-aed0-d3f0949eb57d</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <Nullable>enable</Nullable>
+<!--    <DebugType>full</DebugType>-->
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0-preview.5.21301.17" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
+    <PackageReference Include="RestSharp" Version="106.12.0" />
+    <PackageReference Include="RestSharp.Serializers.SystemTextJson" Version="106.12.0" />
   </ItemGroup>
 
   <ItemGroup>
