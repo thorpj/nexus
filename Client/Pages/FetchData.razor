@@ -1,16 +1,16 @@
 ﻿@page "/fetchdata"
 @using Nexus.Shared
+@using System.Threading
 @inject HttpClient Http
-
-
 <div class="bg-white h-full mx-2 p-4">
-    <h1 class="py-2 text-4xl">Weather forecast</h1>
-
+    <h1 class="py-2 text-4xl">Weatherforecast </h1>
     <p class="py-2">This component demonstrates fetching data from the server.</p>
 
     @if (forecasts == null)
     {
-        <p><em>Loading...</em></p>
+        <p>
+            <em>Loading...</em>
+        </p>
     }
     else
     {
@@ -27,20 +27,20 @@
                 @foreach (var forecast in forecasts)
                 {
                     <tr>
-                        <td>@forecast.Date.ToShortDateString()</td>
-                        <td>@forecast.TemperatureC</td>
-                        <td>@forecast.TemperatureF</td>
-                        <td>@forecast.Summary</td>
+                        <td>
+                            @forecast.Date.ToShortDateString() </td>
+                        <td>
+                            @forecast.TemperatureC </td>
+                        <td>
+                            @forecast.TemperatureF </td>
+                        <td>
+                            @forecast.Summary </td>
                     </tr>
                 }
             </tbody>
         </table>
     }
 </div>
-
-
-
-
 @code {
     private WeatherForecast[] forecasts;
 

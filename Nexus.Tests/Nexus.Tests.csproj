@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-
+    <UserSecretsId>f9ff54c0-c757-4eb4-aed0-d3f0949eb57d</UserSecretsId>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -29,5 +29,5 @@
     <ProjectReference Include="..\Server\Nexus.Server.csproj" />
     <ProjectReference Include="..\Shared\Nexus.Shared.csproj" />
   </ItemGroup>
-
+  
 </Project>

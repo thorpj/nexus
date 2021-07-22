@@ -14,7 +14,7 @@
               "watch",
               "run"
             ],
-            "cwd": "${workspaceFolder}/Client",
+            "cwd": "${workspaceFolder}/Server",
           },
     ],
     "compounds": []

@@ -44,7 +44,7 @@ namespace Nexus.Server.Services.Autotask
         {
             var request = BuildRequest(path);
             IRestResponse response = await _restClient.ExecuteAsync(request, _cancellationToken);
-            AutotaskApiResponse<T>? autotaskApiResponse = JsonSerializer.Deserialize<AutotaskApiResponse<T>>(response.Content, options: _serializerOptions);
+            var autotaskApiResponse = JsonSerializer.Deserialize<AutotaskApiResponse<T>>(response.Content, options: _serializerOptions);
 
             LogRequest(request, response.Content);
             
