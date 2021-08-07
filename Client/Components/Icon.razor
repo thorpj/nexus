@@ -1,0 +1,10 @@
+﻿<i class="bi-@Name @ClassName" @attributes="AdditionalAttributes"></i>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+    [Parameter]
+    public string ClassName { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object> AdditionalAttributes { get; set; }
+}

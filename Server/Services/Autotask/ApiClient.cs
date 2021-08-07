@@ -269,13 +269,9 @@ namespace Nexus.Server.Services.Autotask
 
         public int? MaxRecords = ApiClient.MAX_PAGE_SIZE;
 
-        public Query(IReadOnlyCollection<Filter> filters = null, int? maxRecords = null)
+        public Query(IReadOnlyCollection<Filter> filters, int? maxRecords = null)
         {
-            if (filters != null)
-            {
-                AddFilters(filters);
-            }
-
+            AddFilters(filters);
             if (maxRecords != null)
             {
                 MaxRecords = maxRecords;

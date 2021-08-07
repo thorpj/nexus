@@ -7,6 +7,7 @@
     "scripts": {
         "buildcss:dev": "cross-env TAILWIND_MODE=build postcss ./app.css -o ./wwwroot/css/app.css",
         "buildcss:release": "cross-env NODE_ENV=production postcss ./app.css -o ./wwwroot/css/app.css",
+        "buildcss:intellisense": "npx tailwindcss --config tailwind.config.intellisense.js --postcss postcss.config.js -i app.css -o ./tailwind-intellisense.css",
         "buildcss:watch": "npx tailwindcss --watch --config tailwind.config.js --postcss postcss.config.js -i app.css -o ./wwwroot/css/app.css"
     },
     "devDependencies": {
@@ -17,6 +18,9 @@
         "postcss-import": "^14.0",
         "postcss-cli": "^8.3",
         "tailwindcss": "^2.2",
-        "tailwindcss-textshadow": "2.1"
+        "tailwindcss-textshadow": "^2.1",
+        "@tailwindcss/typography": "^0.4",
+        "cross-env": "^7.0",
+        "@tailwindcss/aspect-ratio": "^0.2"
     }
 }

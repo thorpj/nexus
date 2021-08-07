@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Nexus.Shared.Models.Autotask
@@ -50,10 +51,11 @@ namespace Nexus.Shared.Models.Autotask
 
     }
 
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public class UserDefinedField
     {
-        public string name;
-        public string value;
+        public string name = null!;
+        public string? value;
 
         public override string ToString() => $"{name}: {value}";
     }

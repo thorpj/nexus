@@ -1,5 +1,4 @@
 ﻿@page "/autotask/ticket"
-@inject HttpClient Http
 
 <div class="bg-white h-full mx-2 p-4">
     <h3 class="text-xl">Ticket</h3>
@@ -14,22 +13,12 @@
             <h1 class="text-4xl">@_ticket.Title</h1>
 
             <h3 class="text-xl">@_ticket.TicketNumber</h3>
-                                                     
-            <p>@_ticket.UserDefinedFields[0].value</p>
+            <p>Due Date: @_ticket.DueDateTime</p>
+            <p>Create Date: @_ticket.CreatorResourceID</p>
+            <p>@_ticket.Description</p>
+
         }
     </div>
 
 </div>
 
-
-@code {
-    private IEnumerable<Ticket> _tickets;
-    private Ticket _ticket;
-
-    protected override async Task OnInitializedAsync()
-    {
-    // _tickets = await Http.GetFromJsonAsync<IEnumerable<Ticket>>("api/autotask/tickets");
-        _ticket = await Http.GetFromJsonAsync<Ticket>("api/autotask/tickets/68275");
-    }
-
-}

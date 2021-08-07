@@ -1,8 +1,6 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-    purge: ["./**/*.{html,razor,razor.css}"],
-    mode: "jit",
     darkMode: "media",
     theme: {
         extend: {
@@ -11,20 +9,23 @@ module.exports = {
                 orange: colors.orange,
             },
             gridTemplateRows: {
-                'mobile-layout': '70px 50px 30fr 4fr',
-            },
-            gridTemplateColumns: {
-                'sidebar-layout': '2fr 10fr'
+                'mobile-layout': '70px minmax(900px, 1fr) 100px',
             }
         },
     },
     variants: {
-        extend: {}
+        extend: {
+            backgroundColor: ['active'],
+            borderColor: ['active'],
+            fill: ['hover', 'focus'],
+            stroke: ['hover', 'focus'],
+            strokeWidth: ['hover', 'focus']
+        }
     },
     plugins: [
         require("tailwindcss-textshadow"),
         require("@tailwindcss/forms"),
-        require("@tailwindcss/typography")
-        // require("@tailwindcss/aspect-ratio")
+        require("@tailwindcss/typography"),
+        require("@tailwindcss/aspect-ratio")
     ],
 };
