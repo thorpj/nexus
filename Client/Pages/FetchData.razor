@@ -6,13 +6,11 @@
     <h1 class="py-2 text-4xl">Weatherforecast </h1>
     <p class="py-2">This component demonstrates fetching data from the server.</p>
 
-    @if (forecasts == null)
+    @if (_forecasts == null)
     {
-        <p>
-            <em>Loading...</em>
-        </p>
+        <p class="italic">Loading...</p>
     }
-    else
+    else if (_forecasts.Any())
     {
         <table class="table">
             <thead>
@@ -24,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var forecast in forecasts)
+                @foreach (var forecast in _forecasts)
                 {
                     <tr>
                         <td>
@@ -40,13 +38,16 @@
             </tbody>
         </table>
     }
+    else
+    {
+        <p class="font-semibold">Failed to load weather forecasts</p>
+    }
 </div>
 @code {
-    private WeatherForecast[] forecasts;
+    private IList<WeatherForecast>? _forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        _forecasts = await Http.GetFromJsonAsync<IList<WeatherForecast>>("WeatherForecast") ?? new List<WeatherForecast>();
     }
-
 }

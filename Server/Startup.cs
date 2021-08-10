@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using System.Net.Http;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 
 namespace Nexus.Server
@@ -29,6 +31,15 @@ namespace Nexus.Server
             services.AddRazorPages();
 
             services.AddResponseCaching();
+
+            services.AddScoped<HttpClient>(sp =>
+            {
+                var navigationManager = sp.GetRequiredService<NavigationManager>();
+                return new HttpClient
+                {
+                    BaseAddress = new Uri(navigationManager.BaseUri)
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +73,7 @@ namespace Nexus.Server
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
-                endpoints.MapFallbackToFile("index.html");
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }

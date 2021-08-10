@@ -130,7 +130,7 @@ namespace Nexus.Server.Services.Autotask
             request.AddHeader("ApiIntegrationCode", _configuration["AutotaskApi:ApiIntegrationCode"]);
         }
         
-        private void LogRequest(IRestRequest request, string entityMessage = null)
+        private void LogRequest(IRestRequest request, string? entityMessage = null)
         {
             var requestToLog = new
             {
