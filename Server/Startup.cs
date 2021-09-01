@@ -74,6 +74,7 @@ namespace Nexus.Server
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
                 endpoints.MapFallbackToPage("/_Host");
+                // endpoints.MapFallbackToFile("index.html");
             });
         }
     }
