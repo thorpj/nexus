@@ -31,7 +31,7 @@ namespace Nexus.Server.Controllers.Autotask
         [HttpGet("{id}")]
         public async Task<ActionResult<Ticket>> GetTicket(string id)
         {
-            _logger.LogInformation($"Fetching Tickets/{id} from AT API");
+            _logger.LogInformation("Fetching Tickets/{Id} from AT API", id);
             var ticket = await _apiClient.GetAsync<Ticket>($"Tickets/{id}");
             return ticket;
         }

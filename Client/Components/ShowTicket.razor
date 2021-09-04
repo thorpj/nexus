@@ -1,0 +1,13 @@
+﻿<div class="bg-white p-4 rounded-md shadow prose md:prose-xl xl:max-w-none 2xl:mx-4">
+    <h2>@Ticket.Title</h2>
+    <h4>@Ticket.TicketNumber</h4>
+    <p>Due Date: @Ticket.DueDateTime</p>
+    <p>Creator ID: @Ticket.CreatorResourceID</p>
+    <p>@Ticket.Description</p>
+</div>
+
+@code {
+
+    [Parameter]
+    public Ticket Ticket { get; set; } = null!;
+}

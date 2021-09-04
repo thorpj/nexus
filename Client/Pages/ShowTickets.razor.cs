@@ -7,18 +7,18 @@ using Nexus.Shared.Models.Autotask;
 
 namespace Nexus.Client.Pages
 {
-    public partial class ShowTicket : ComponentBase
+    public partial class ShowTickets : ComponentBase
     {
         [Inject]
         HttpClient Http { get; set; }
 
-        private IEnumerable<Ticket> _tickets;
-        private Ticket _ticket;
+        private IEnumerable<Ticket>? _tickets;
+        private Ticket? _ticket;
 
         protected override async Task OnInitializedAsync()
         {
-            // _tickets = await Http.GetFromJsonAsync<IEnumerable<Ticket>>("api/autotask/tickets");
-            _ticket = await Http.GetFromJsonAsync<Ticket>("api/autotask/tickets/68275");
+            _tickets = await Http.GetFromJsonAsync<IEnumerable<Ticket>>("api/autotask/tickets");
+            // _ticket = await Http.GetFromJsonAsync<Ticket>("api/autotask/tickets/68275");
         }
     }
 }
