@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Nexus.Shared.Models.Autotask;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ namespace Nexus.Server.Controllers.Autotask
 {
     [ApiController]
     [Route("api/autotask/[controller]")]
-    [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new [] {"*"})]
+    // [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new [] {"*"})]
     public class TicketsController : ControllerBase
     {
         private readonly ApiClient _apiClient;
@@ -40,8 +41,15 @@ namespace Nexus.Server.Controllers.Autotask
         public async Task<ActionResult<List<Ticket>>> Index()
         {
             var query = new Query(50);
-            query.AddFilter(new Filter("id", "0", "gt"));
+            query.AddFilter(new Filter("id", "68274", "gt"));
             var tickets =  await _apiClient.QueryAsync<Ticket>("Tickets/query", query);
+            
+            // tickets.ForEach(ticket => Console.WriteLine($"{ticket.TicketNumber}. UDF Count: {ticket.UserDefinedFields.Count}, Serial: {ticket.DeviceSerialNumber}, Model: {ticket.DeviceModelType}"));
+            // tickets[0].UserDefinedFields.ForEach(Console.WriteLine);
+            //
+            // return null!;
+            var ticket = tickets.First();
+            Console.WriteLine($"{ticket.TicketNumber}, {string.Join(", ", ticket.UserDefinedFields.ToList().Select(field => $"{field?.name}={field?.value}"))}");
             return tickets;
         }
     }
